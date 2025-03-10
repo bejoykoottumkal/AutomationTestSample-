@@ -19,14 +19,15 @@ pipeline {
         stage('Test') {
             steps {
                 // Run TestNG tests
-                sh 'mvn test'
+                sh 'mvn clean test'
             }
         }
 
         stage('Publish Results') {
             steps {
                 // Publish TestNG test results
-                junit '**/target/test-classes/testng-results.xml'
+                junit '**/target/surefire-reports/testng-results.xml'
+
             }
         }
     }
